@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
-import "./Header.css"
+import "./Header.css";
 
 const Header = () => {
   const { user, loading, logOutUser } = useContext(AuthContext);
   const handleLogoutUser = () => {
-    logOutUser()
-  }
+    logOutUser();
+  };
   return (
     <div className="bg-base-100 header py-2 shadow-lg">
       <div className="container mx-auto flex justify-between items-center">
@@ -17,7 +17,13 @@ const Header = () => {
           <Link to="/">All toys</Link>
           <Link to="/">My toys</Link>
           <Link to="/">Add a toy</Link>
-          {loading ? <span>Loading...</span> : <span className="badge text-primary font-bold">{user?.displayName}</span>}
+          {loading ? (
+            <span>Loading...</span>
+          ) : (
+            <span className="badge text-primary font-bold">
+              {user?.displayName}
+            </span>
+          )}
           {loading ? (
             <span>Loading...</span>
           ) : user ? (
@@ -33,7 +39,9 @@ const Header = () => {
                   <Link to="/">Profile</Link>
                 </li>
                 <li>
-                  <Link onClick={handleLogoutUser} to="/">Sign out</Link>
+                  <Link onClick={handleLogoutUser} to="/">
+                    Sign out
+                  </Link>
                 </li>
               </ul>
             </div>

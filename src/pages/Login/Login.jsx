@@ -4,7 +4,20 @@ import { AuthContext } from "../../providers/AuthProviders";
 
 const Login = () => {
   const { loginUser } = useContext(AuthContext);
-  const handleLoginUser = () => {};
+  const handleLoginUser = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    loginUser(email, password)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error.code, error.message);
+      });
+  };
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row">
