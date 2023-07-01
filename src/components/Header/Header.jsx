@@ -23,14 +23,14 @@ const Header = () => {
     });
   };
   return (
-    <div className="bg-base-100 header py-2 shadow-lg">
+    <div className="bg-base-100 header py-2 shadow-lg z-10">
       <div className="container mx-auto flex justify-between items-center">
         <h2 className="text-xl font-bold">Toy</h2>
         <div className="flex items-center space-x-6">
-          <Link to="/">Home</Link>
-          <Link to="/">All toys</Link>
-          <Link to="/">My toys</Link>
-          <Link to="/">Add a toy</Link>
+          <Link className="font-bold" to="/">Home</Link>
+          <Link className="font-bold" to="/allToys">All toys</Link>
+          <Link className="font-bold" to="/myToys">My toys</Link>
+          <Link className="font-bold" to="/addAToy">Add a toy</Link>
           {loading ? (
             <span>Loading...</span>
           ) : (
@@ -42,12 +42,12 @@ const Header = () => {
             <span>Loading...</span>
           ) : user ? (
             <div className="dropdown dropdown-bottom dropdown-end">
-              <label tabIndex={0} className="btn btn-circle m-1">
+              <label tabIndex={0} className="btn btn-circle flex justify-center items-center m-1">
                 <img className="w-10 h-10 rounded-full" src={user?.photoURL} />
               </label>
               <ul
                 tabIndex={0}
-                className="dropdown-content z-[10] menu p-2 shadow bg-base-100 rounded-box w-52"
+                className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 z-10"
               >
                 <li>
                   <Link to="/">Profile</Link>
