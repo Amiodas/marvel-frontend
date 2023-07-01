@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
-  const { loginUser } = useContext(AuthContext);
+  const { loginUser, googleSignIn } = useContext(AuthContext);
   const handleLoginUser = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -12,14 +14,27 @@ const Login = () => {
 
     loginUser(email, password)
       .then((res) => {
+        toast("User succesfully signed in!!!")
         console.log(res);
       })
       .catch((error) => {
+        toast(error.code, error.message);
+        console.log(error.code, error.message);
+      });
+  };
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then(() => {
+        toast("User succesfully signed in!!!")
+      })
+      .catch((error) => {
+        toast(error.code, error.message);
         console.log(error.code, error.message);
       });
   };
   return (
     <div className="hero min-h-screen bg-base-200">
+    <ToastContainer />
       <div className="hero-content flex-col lg:flex-row">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Login now!</h1>
@@ -74,6 +89,14 @@ const Login = () => {
               </Link>
             </div>
           </form>
+          <div className="text-center mb-6">
+            <button
+              onClick={handleGoogleSignIn}
+              className="btn btn-primary btn-circle"
+            >
+              G
+            </button>
+          </div>
         </div>
       </div>
     </div>

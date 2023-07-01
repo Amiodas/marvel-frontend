@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const { createUser, updateUser, googleSignIn } = useContext(AuthContext);
@@ -20,22 +22,28 @@ const Register = () => {
           .catch((error) => {
             console.log(error.code, error.message);
           });
+        toast("User successfully, created!!!");
       })
       .catch((error) => {
+        toast(error.code, error.message);
         console.log(error.code, error.message);
       });
   };
 
   const handleGoogleSignIn = () => {
     googleSignIn()
-      .then(() => {})
+      .then(() => {
+        toast("User successfully, created!!!");
+      })
       .catch((error) => {
+        toast(error.code, error.message);
         console.log(error.code, error.message);
       });
   };
 
   return (
     <div className="hero min-h-screen bg-base-200">
+      <ToastContainer />
       <div className="hero-content flex-col lg:flex-row">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Sign Up!</h1>
@@ -46,7 +54,7 @@ const Register = () => {
           </p>
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <form onSubmit={handleCreateRegister} className="card-body">
+          <form onSubmit={handleCreateRegister} className="card-body z-0">
             <h3 className="text-2xl font-bold text-center">Sign Up</h3>
             <div className="form-control">
               <label className="label">

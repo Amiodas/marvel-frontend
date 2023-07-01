@@ -2,11 +2,25 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 import "./Header.css";
+import Swal from "sweetalert2";
 
 const Header = () => {
   const { user, loading, logOutUser } = useContext(AuthContext);
   const handleLogoutUser = () => {
-    logOutUser();
+    Swal.fire({
+      title: "Are you sure?",
+      text: "To logout from this account!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, logout!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        logOutUser();
+        Swal.fire("Logout!", "You are logged out.", "success");
+      }
+    });
   };
   return (
     <div className="bg-base-100 header py-2 shadow-lg">
@@ -33,7 +47,7 @@ const Header = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                className="dropdown-content z-[10] menu p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li>
                   <Link to="/">Profile</Link>
