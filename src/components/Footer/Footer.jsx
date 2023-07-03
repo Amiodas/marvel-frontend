@@ -1,8 +1,9 @@
 import React from "react";
+import "./Footer.css"
 
 const Footer = () => {
   return (
-    <div className="p-10 bg-base-200 text-base-content">
+    <div className="p-10 footer-container text-base-content">
       <footer className="container mx-auto footer">
         <div>
           <svg
@@ -22,7 +23,7 @@ const Footer = () => {
           </p>
         </div>
         <div>
-          <span className="footer-title">Services</span>
+          <span className="footer-title font-bold text-white">Services</span>
           <a className="link link-hover">Branding</a>
           <a className="link link-hover">Design</a>
           <a className="link link-hover">Marketing</a>
