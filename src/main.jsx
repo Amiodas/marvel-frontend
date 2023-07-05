@@ -11,6 +11,8 @@ import Profile from "./pages/Profile/Profile";
 import AllToys from "./pages/AllToys/AllToys";
 import MyToys from "./pages/MyToys/MyToys";
 import AddAToy from "./pages/AddAToy/AddAToy";
+import ErrorPageLayout from "./layouts/ErrorPageLayout/ErrorPageLayout";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +52,16 @@ const router = createBrowserRouter([
         element: <Login />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <ErrorPageLayout />,
+    children: [
+      {
+        path: "*",
+        element: <ErrorPage />,
+      },
+    ]
   },
 ]);
 

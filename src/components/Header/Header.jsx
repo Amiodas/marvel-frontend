@@ -28,6 +28,7 @@ const Header = () => {
         <h2 className="text-xl font-bold">Toy</h2>
         <div className="flex items-center space-x-6">
           <Link className="font-bold" to="/">Home</Link>
+          <Link className="font-bold" to="/blog">Blog</Link>
           <Link className="font-bold" to="/allToys">All toys</Link>
           <Link className="font-bold" to="/myToys">My toys</Link>
           <Link className="font-bold" to="/addAToy">Add a toy</Link>
@@ -41,7 +42,7 @@ const Header = () => {
           {loading ? (
             <span>Loading...</span>
           ) : user ? (
-            <div className="dropdown dropdown-bottom dropdown-end">
+            <div className="dropdown dropdown-bottom dropdown-end z-10">
               <label tabIndex={0} className="btn btn-circle flex justify-center items-center m-1">
                 <img className="w-10 h-10 rounded-full" src={user?.photoURL} />
               </label>
