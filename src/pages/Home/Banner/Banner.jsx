@@ -29,38 +29,38 @@ const Banner = () => {
         </div>
       </div>
       <div className="grid grid-cols-4 gap-5 mt-5">
-        <div className="card-item p-5">
-          <h3 className="text-xl font-semibold">First step</h3>
+        <div className="card-item p-5 border-2">
+          <h3 className="text-xl font-semibold text-primary">First step</h3>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
-        <div className="card-item p-5">
-          <h3 className="text-xl font-semibold">Second step</h3>
+        <div className="card-item p-5 border-2">
+          <h3 className="text-xl font-semibold text-primary">Second step</h3>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
-        <div className="card-item p-5">
-          <h3 className="text-xl font-semibold">Third step</h3>
+        <div className="card-item p-5 border-2">
+          <h3 className="text-xl font-semibold text-primary">Third step</h3>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
-        <div className="card-item p-5">
-          <h3 className="text-xl font-semibold">Fourth step</h3>
+        <div className="card-item p-5 border-2">
+          <h3 className="text-xl font-semibold text-primary">Fourth step</h3>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
       </div>
       <div className="grid grid-cols-4 gap-5 mt-5">
-        <div className="card-item p-5">
-          <h3 className="text-xl font-semibold">First step</h3>
+        <div className="card-item p-5 border-2">
+          <h3 className="text-xl font-semibold text-primary">First step</h3>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
-        <div className="card-item p-5">
-          <h3 className="text-xl font-semibold">Second step</h3>
+        <div className="card-item p-5 border-2">
+          <h3 className="text-xl font-semibold text-primary">Second step</h3>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
-        <div className="card-item p-5">
-          <h3 className="text-xl font-semibold">Third step</h3>
+        <div className="card-item p-5 border-2">
+          <h3 className="text-xl font-semibold text-primary">Third step</h3>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
-        <div className="card-item p-5">
-          <h3 className="text-xl font-semibold">Fourth step</h3>
+        <div className="card-item p-5 border-2">
+          <h3 className="text-xl font-semibold text-primary">Fourth step</h3>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </div>
       </div>

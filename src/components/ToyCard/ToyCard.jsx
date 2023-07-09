@@ -9,12 +9,12 @@ const ToyCard = ({ toy }) => {
   return (
     <div className="card card-glass p-4">
       <img src={picture} alt="" className="w-full h-64 rounded-lg" />
-      <h3 className="my-2 text-xl text-teal-600 font-bold">{name}</h3>
-      <p className="text-gray-700">Price: $ {price}</p>
-      <p className="text-gray-700">Rating: {rating}</p>
+      <h3 className="my-2 text-xl text-primary font-bold">{name}</h3>
+      <p className="text-gray-400">Price: $ {price}</p>
+      <p className="text-gray-400">Rating: {rating}</p>
       <button
         onClick={() => handleToyDetails(id)}
-        className="btn mt-4 bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% border-0 text-white"
+        className="btn btn-primary mt-4"
       >
         View Toys
       </button>

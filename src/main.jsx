@@ -13,6 +13,7 @@ import MyToys from "./pages/MyToys/MyToys";
 import AddAToy from "./pages/AddAToy/AddAToy";
 import ErrorPageLayout from "./layouts/ErrorPageLayout/ErrorPageLayout";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
+import Blog from "./pages/Blog/Blog";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "/toyDetails",
         element: <Login />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
       },
     ],
   },

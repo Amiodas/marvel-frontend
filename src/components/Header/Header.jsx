@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 import "./Header.css";
 import Swal from "sweetalert2";
+import ActiveClass from "../ActiveClass/ActiveClass";
 
 const Header = () => {
   const { user, loading, logOutUser } = useContext(AuthContext);
@@ -23,15 +24,15 @@ const Header = () => {
     });
   };
   return (
-    <div className="bg-base-100 header py-2 shadow-lg z-10">
+    <div className="header py-3 text-primary shadow-lg z-10">
       <div className="container mx-auto flex justify-between items-center">
         <h2 className="text-xl font-bold">Toy</h2>
         <div className="flex items-center space-x-6">
-          <Link className="font-bold" to="/">Home</Link>
-          <Link className="font-bold" to="/blog">Blog</Link>
-          <Link className="font-bold" to="/allToys">All toys</Link>
-          <Link className="font-bold" to="/myToys">My toys</Link>
-          <Link className="font-bold" to="/addAToy">Add a toy</Link>
+          <ActiveClass to="/">Home</ActiveClass>
+          <ActiveClass to="/blog">Blog</ActiveClass>
+          <ActiveClass to="/allToys">All toys</ActiveClass>
+          <ActiveClass to="/myToys">My toys</ActiveClass>
+          <ActiveClass to="/addAToy">Add a toy</ActiveClass>
           {loading ? (
             <span>Loading...</span>
           ) : (
