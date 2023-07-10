@@ -43,7 +43,7 @@ const Header = () => {
           {loading ? (
             <span>Loading...</span>
           ) : user ? (
-            <div className="dropdown dropdown-bottom dropdown-end z-10">
+            <div className="dropdown dropdown-bottom dropdown-end z-10" title={user?.displayName}>
               <label tabIndex={0} className="btn btn-circle flex justify-center items-center m-1">
                 <img className="w-10 h-10 rounded-full" src={user?.photoURL} />
               </label>
@@ -52,7 +52,7 @@ const Header = () => {
                 className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 z-10"
               >
                 <li>
-                  <Link to="/">Profile</Link>
+                  <Link to="/profile">Profile</Link>
                 </li>
                 <li>
                   <Link onClick={handleLogoutUser} to="/">

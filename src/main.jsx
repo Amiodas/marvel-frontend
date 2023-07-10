@@ -14,6 +14,7 @@ import AddAToy from "./pages/AddAToy/AddAToy";
 import ErrorPageLayout from "./layouts/ErrorPageLayout/ErrorPageLayout";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import Blog from "./pages/Blog/Blog";
+import ToyDetails from "./pages/ToyDetails/ToyDetails";
 
 const router = createBrowserRouter([
   {
@@ -49,8 +50,10 @@ const router = createBrowserRouter([
         element: <AddAToy />,
       },
       {
-        path: "/toyDetails",
-        element: <Login />,
+        path: "/toyDetails/:id",
+        element: <ToyDetails />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/toys/${params.id}`),
       },
       {
         path: "/blog",
@@ -66,7 +69,7 @@ const router = createBrowserRouter([
         path: "*",
         element: <ErrorPage />,
       },
-    ]
+    ],
   },
 ]);
 

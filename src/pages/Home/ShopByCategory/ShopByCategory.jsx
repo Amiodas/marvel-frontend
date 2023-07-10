@@ -8,7 +8,7 @@ const ShopByCategory = () => {
   const [displayToys, setDisplayToys] = useState([]);
 
   useEffect(() => {
-    fetch("toys.json")
+    fetch("http://localhost:5000/toys/")
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, []);
@@ -22,22 +22,27 @@ const ShopByCategory = () => {
       <div>
         <h2 className="text-xl text-primary font-bold">Shop by category</h2>
         <div className="grid grid-cols-4 gap-6 mt-5">
-          <div className="card-glass rounded-lg p-5">
+          <div className="card-glass min-h-screen rounded-lg p-5">
             <h2 className="text-lg text-primary font-semibold">Categories</h2>
           </div>
           <div className="col-span-3 rounded-lg">
             <div className="grid grid-cols-3 gap-5">
               {displayToys.map((toy) => (
-                <ToyCard key={toy.id} toy={toy} />
+                <ToyCard key={toy._id} toy={toy} />
               ))}
-            </div>
-            <div className="text-center">
-            <Link to="/allToys">
-              <button className="btn btn-primary mt-8 px-8 border-0">All Toys</button>
-            </Link>
             </div>
           </div>
         </div>
+        <div className="grid grid-cols-4 gap-6">
+          <div className=""></div>
+          <div className="text-center col-span-3">
+              <Link to="/allToys">
+                <button className="btn btn-primary mt-8 px-8 border-0">
+                  All Toys
+                </button>
+              </Link>
+            </div>
+          </div>
       </div>
     </div>
   );
