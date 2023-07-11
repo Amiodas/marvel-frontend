@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ToyCard = ({ toy }) => {
-  const { _id, name, picture, price, rating } = toy;
+  const { _id, name, picture, price, rating, seller, subcategories } = toy;
   const handleToyDetails = (id) => {
     console.log(id);
   };
@@ -11,6 +11,8 @@ const ToyCard = ({ toy }) => {
       <img src={picture} alt="" className="w-full h-64 rounded-lg" />
       <h3 className="my-2 text-xl text-primary font-bold">{name}</h3>
       <p className="text-gray-400">Price: $ {price}</p>
+      <p className="text-gray-400">Seller name: {seller}</p>
+      <p className="text-gray-400">Sub category: {subcategories}</p>
       <p className="text-gray-400">Rating: {rating}</p>
       <Link to={`/toyDetails/${_id}`}>
         <button

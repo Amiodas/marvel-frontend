@@ -31,11 +31,7 @@ const ShopByCategory = () => {
                 <ToyCard key={toy._id} toy={toy} />
               ))}
             </div>
-          </div>
-        </div>
-        <div className="grid grid-cols-4 gap-6">
-          <div className=""></div>
-          <div className="text-center col-span-3">
+            <div className="text-center">
               <Link to="/allToys">
                 <button className="btn btn-primary mt-8 px-8 border-0">
                   All Toys
@@ -43,6 +39,7 @@ const ShopByCategory = () => {
               </Link>
             </div>
           </div>
+        </div>
       </div>
     </div>
   );
