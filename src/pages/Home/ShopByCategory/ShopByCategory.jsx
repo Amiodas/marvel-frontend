@@ -5,12 +5,19 @@ import { Link } from "react-router-dom";
 
 const ShopByCategory = () => {
   const [toys, setToys] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [displayToys, setDisplayToys] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:5000/toys/")
       .then((res) => res.json())
       .then((data) => setToys(data));
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/toyCategory")
+      .then((res) => res.json())
+      .then((data) => setCategories(data));
   }, []);
 
   useEffect(() => {
@@ -22,8 +29,15 @@ const ShopByCategory = () => {
       <div>
         <h2 className="text-xl text-primary font-bold">Shop by category</h2>
         <div className="grid grid-cols-4 gap-6 mt-5">
-          <div className="card-glass min-h-screen rounded-lg p-5">
+          <div className="bg-gray-100 min-h-screen rounded-lg p-5">
             <h2 className="text-lg text-primary font-semibold">Categories</h2>
+            <ul className="menu rounded-box mt-5">
+              {categories.map((category, index) => (
+                <li key={index}>
+                  <a>{category}</a>
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="col-span-3 rounded-lg">
             <div className="grid grid-cols-3 gap-5">

@@ -10,6 +10,7 @@ const AddAToy = () => {
     const sellerEmail = form.sellerEmail.value;
     const picture = form.picture.value;
     const name = form.name.value;
+    const categories = form.categories.value;
     const subcategories = form.subcategories.value;
     const price = form.price.value;
     const rating = form.rating.value;
@@ -22,6 +23,7 @@ const AddAToy = () => {
       name,
       picture,
       price,
+      categories,
       subcategories,
       rating,
       quantity,
@@ -45,8 +47,9 @@ const AddAToy = () => {
         "content-type": "application/json",
       },
       body: JSON.stringify(addedToy),
-    }).then((res) => res.json())
-    .then(() =>{})
+    })
+      .then((res) => res.json())
+      .then(() => {});
   };
   return (
     <div className="my-16">
@@ -100,7 +103,17 @@ const AddAToy = () => {
             />
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-8">
+        <div className="grid grid-cols-3 gap-8">
+          <div className="form-control">
+            <label className="label">Category</label>
+            <input
+              type="text"
+              name="categories"
+              placeholder="Type here"
+              className="input border-2 border-gray-200 w-full bg-white"
+              required
+            />
+          </div>
           <div className="form-control">
             <label className="label">Sub-category</label>
             <input
