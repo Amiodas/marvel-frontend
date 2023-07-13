@@ -21,31 +21,39 @@ const ShopByCategory = () => {
   }, []);
 
   useEffect(() => {
-    const data = toys.slice(0, 6);
+    const data = toys.slice(0, 8);
     setDisplayToys(data);
   }, [toys]);
+
+  const handleDisplayToysByCategory = (category) => {
+    console.log(category);
+    const toyByCategory = toys.filter((toy) => toy.categories === category);
+    console.log(toyByCategory);
+    setDisplayToys(toyByCategory);
+  };
   return (
     <div className="mb-16">
       <div>
         <h2 className="text-xl text-primary font-bold">Shop by category</h2>
-        <div className="grid grid-cols-4 gap-6 mt-5">
-          <div className="bg-gray-100 min-h-screen rounded-lg p-5">
+        <div className="bg-gray-100 rounded-lg p-5">
             <h2 className="text-lg text-primary font-semibold">Categories</h2>
-            <ul className="menu rounded-box mt-5">
+              <div className="flex gap-4 mt-2 mb-3s">
               {categories.map((category, index) => (
-                <li key={index}>
-                  <a>{category}</a>
+                <li key={index} className="flex">
+                  <a className="btn btn-sm btn-primary" onClick={() => handleDisplayToysByCategory(category)}>{category}</a>
                 </li>
               ))}
-            </ul>
+              </div>
+            
           </div>
-          <div className="col-span-3 rounded-lg">
-            <div className="grid grid-cols-3 gap-5">
+        <div className="mt-10 mb-16">
+          <div className="rounded-lg">
+            <div className="grid grid-cols-4 gap-8">
               {displayToys.map((toy) => (
                 <ToyCard key={toy._id} toy={toy} />
               ))}
             </div>
-            <div className="text-center">
+            <div className="text-center mt-8">
               <Link to="/allToys">
                 <button className="btn btn-primary mt-8 px-8 border-0">
                   All Toys

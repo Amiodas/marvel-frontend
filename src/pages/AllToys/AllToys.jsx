@@ -54,10 +54,21 @@ const AllToys = () => {
 
   const handleDisplayToysByCategory = (category) => {
     console.log(category);
-    const toyByCategory = toys.filter((toy) => toy.categories === category)
+    const toyByCategory = toys.filter((toy) => toy.categories === category);
     console.log(toyByCategory);
-    setDisplayToys(toyByCategory)
-  }
+    setDisplayToys(toyByCategory);
+  };
+
+  const handleSearchByToyName = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const search = form.search.value;
+
+    const toyByCategory = toys.filter(
+      (toy) => toy.name.toUpperCase() === search.toUpperCase()
+    );
+    setDisplayToys(toyByCategory);
+  };
   return (
     <div>
       <div className="mt-8 mb-16">
@@ -67,14 +78,48 @@ const AllToys = () => {
             <div className="bg-gray-100 min-h-screen rounded-lg p-5">
               <h2 className="text-lg text-primary font-semibold">Categories</h2>
               <ul className="menu rounded-box mt-5">
-              {categories.map((category, index) => (
-                <li key={index}>
-                  <a onClick={() => handleDisplayToysByCategory(category)}>{category}</a>
-                </li>
-              ))}
-            </ul>
+                {categories.map((category, index) => (
+                  <li key={index}>
+                    <a onClick={() => handleDisplayToysByCategory(category)}>
+                      {category}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
             <div className="col-span-3 rounded-lg">
+              <div>
+                <form onSubmit={handleSearchByToyName}>
+                  <div className="mb-6 flex gap-4">
+                    <input
+                      type="text"
+                      name="search"
+                      placeholder="Search toy by name"
+                      className="input border-2 border-gray-200 w-full bg-white"
+                    />
+                    <button type="submit" className="btn btn-primary">
+                      Search
+                    </button>
+                  </div>
+                </form>
+              </div>
+              {displayToys.length !== 0 ? (
+                ""
+              ) : (
+                <div className="flex justify-center">
+                  <div>
+                    <img
+                      src="/src/assets/images/search.jpg"
+                      className="w-96 h-96"
+                      alt=""
+                    />
+                    <h2 className="text-3xl text-center font bold">
+                      No result found.
+                    </h2>
+                    <p className="text-xl text-center">Please Search again!</p>
+                  </div>
+                </div>
+              )}
               <div className="grid grid-cols-3 gap-5">
                 {displayToys.map((toy) => (
                   <ToyCard key={toy._id} toy={toy} />
@@ -91,9 +136,17 @@ const AllToys = () => {
                     {number + 1}
                   </button>
                 ))}
-                <select className="dropdown btn" value={itemsPerPage} onChange={handleSelectChange}>
+                <select
+                  className="dropdown btn"
+                  value={itemsPerPage}
+                  onChange={handleSelectChange}
+                >
                   {options.map((option) => (
-                    <option key={option} value={option} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                    <option
+                      key={option}
+                      value={option}
+                      className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                    >
                       {option}
                     </option>
                   ))}
