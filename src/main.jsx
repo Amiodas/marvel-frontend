@@ -15,6 +15,7 @@ import ErrorPageLayout from "./layouts/ErrorPageLayout/ErrorPageLayout";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import Blog from "./pages/Blog/Blog";
 import ToyDetails from "./pages/ToyDetails/ToyDetails";
+import Checkout from "./pages/Checkout/Checkout";
 
 const router = createBrowserRouter([
   {
@@ -43,7 +44,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/myToys",
-        element: <MyToys />,
+        element: <MyToys />
+      },
+      {
+        path: "/checkout/:id",
+        element: <Checkout />,
+        loader: ({params}) => fetch(`http://localhost:5000/toys/${params.id}`)
       },
       {
         path: "/addAToy",

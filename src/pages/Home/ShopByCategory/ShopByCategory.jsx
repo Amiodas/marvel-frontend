@@ -21,7 +21,7 @@ const ShopByCategory = () => {
   }, []);
 
   useEffect(() => {
-    const data = toys.slice(0, 8);
+    const data = toys.slice(0, 6);
     setDisplayToys(data);
   }, [toys]);
 
@@ -32,12 +32,12 @@ const ShopByCategory = () => {
     setDisplayToys(toyByCategory);
   };
   return (
-    <div className="mb-16">
+    <div className="mt-16 mb-16">
       <div>
         <h2 className="text-xl text-primary font-bold">Shop by category</h2>
-        <div className="bg-gray-100 rounded-lg p-5">
-            <h2 className="text-lg text-primary font-semibold">Categories</h2>
-              <div className="flex gap-4 mt-2 mb-3s">
+        <div className="flex gap-4 mb-3s bg-gray-100 shadow rounded-lg p-5 mt-4">
+            <h2 className="text-lg text-primary font-semibold">Categories:</h2>
+              <div className="flex gap-4">
               {categories.map((category, index) => (
                 <li key={index} className="flex">
                   <a className="btn btn-sm btn-primary" onClick={() => handleDisplayToysByCategory(category)}>{category}</a>
@@ -48,7 +48,7 @@ const ShopByCategory = () => {
           </div>
         <div className="mt-10 mb-16">
           <div className="rounded-lg">
-            <div className="grid grid-cols-4 gap-8">
+            <div className="grid grid-cols-3 gap-8">
               {displayToys.map((toy) => (
                 <ToyCard key={toy._id} toy={toy} />
               ))}
