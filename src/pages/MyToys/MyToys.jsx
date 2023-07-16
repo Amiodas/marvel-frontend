@@ -73,7 +73,6 @@ const MyToys = () => {
               </div>
               <div>
                 <p>$ {toy.price}</p>
-                <p>{toy._id}</p>
               </div>
               <div>
                 <p>{toy.date}</p>

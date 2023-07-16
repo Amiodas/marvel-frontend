@@ -7,11 +7,11 @@ const Banner = () => {
       <div className="carousel w-full rounded-lg z-0">
         <div
           id="slide1"
-          className="carousel-item relative w-full h-96 rounded-lg"
+          className="carousel-item relative w-full rounded-lg"
         >
           <img
             src="/src/assets/images/carousel/carousel_01.jpg"
-            className="w-full rounded-lg"
+            className="w-full rounded-lg banner-image-gray"
           />
           <div className="absolute transform -translate-y-1/2 left-24 right-5 top-1/2 w-1/4 space-y-6">
             <h3 className="text-4xl font-bold  text-teal-500">

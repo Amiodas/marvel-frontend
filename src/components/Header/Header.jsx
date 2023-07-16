@@ -24,9 +24,9 @@ const Header = () => {
     });
   };
   return (
-    <div className="header py-3 text-primary shadow-lg z-10">
+    <div className="header py-3 bg-primary text-white shadow-lg z-10">
       <div className="container mx-auto flex justify-between items-center">
-        <h2 className="text-xl font-bold">Toy</h2>
+        <Link to="/"><h2 className="text-xl font-bold">Toy</h2></Link>
         <div className="flex items-center space-x-6">
           <ActiveClass to="/">Home</ActiveClass>
           <ActiveClass to="/blog">Blog</ActiveClass>
@@ -36,7 +36,7 @@ const Header = () => {
           {loading ? (
             <span>Loading...</span>
           ) : (
-            <span className="badge text-primary font-bold">
+            <span className="badge border border-white text-white font-bold">
               {user?.displayName}
             </span>
           )}

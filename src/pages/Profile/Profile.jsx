@@ -6,9 +6,9 @@ const Profile = () => {
     return (
         <div className='card p-5 shadow-lg mt-8 mb-16'>
             <h2 className='text-2xl font-bold text-primary'>Your Profile</h2>
-            <div>
+            <div className='my-5'>
                 {
-                    loading ? "Loading..." : <img className='card shadow-lg' src={user?.photoURL} alt="" /> 
+                    loading ? "Loading..." : <img className='card shadow-lg w-48 h-48 border-4 border-primary' src={user?.photoURL} alt="" /> 
                 }
             </div>
             <h3 className='text-xl text-primary font-bold'>{loading ? "Loading..." : user?.displayName}</h3>

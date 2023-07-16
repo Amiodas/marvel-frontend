@@ -42,20 +42,20 @@ const Register = () => {
   };
 
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <div className="hero min-h-screen">
       <ToastContainer />
       <div className="hero-content flex-col lg:flex-row">
         <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Sign Up!</h1>
+          <h1 className="text-5xl font-bold text-primary">Sign Up!</h1>
           <p className="py-6">
             Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
             a id nisi.
           </p>
         </div>
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl mt-8 mb-16">
           <form onSubmit={handleCreateRegister} className="card-body z-0">
-            <h3 className="text-2xl font-bold text-center">Sign Up</h3>
+            <h3 className="text-2xl font-bold text-center text-primary">Sign Up</h3>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
@@ -64,7 +64,7 @@ const Register = () => {
                 type="text"
                 placeholder="name"
                 name="name"
-                className="input input-bordered"
+                className="input bg-white border-gray-200"
                 required
               />
             </div>
@@ -76,7 +76,7 @@ const Register = () => {
                 type="text"
                 placeholder="image url"
                 name="image"
-                className="input input-bordered"
+                className="input bg-white border-gray-200"
                 required
               />
             </div>
@@ -88,7 +88,7 @@ const Register = () => {
                 type="email"
                 placeholder="email"
                 name="email"
-                className="input input-bordered"
+                className="input bg-white border-gray-200"
                 required
               />
             </div>
@@ -100,7 +100,7 @@ const Register = () => {
                 type="password"
                 placeholder="password"
                 name="password"
-                className="input input-bordered"
+                className="input bg-white border-gray-200"
                 required
               />
               <label className="label">
