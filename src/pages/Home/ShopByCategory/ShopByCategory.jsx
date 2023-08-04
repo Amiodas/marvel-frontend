@@ -39,6 +39,11 @@ const ShopByCategory = () => {
     console.log(toyByCategory);
     setDisplayToys(toyByCategory);
   };
+  const handleDisplayAllToys = () => {
+    setLoading(true);
+    setDisplayToys(toys);
+    setLoading(false);
+  };
   return (
     <div className="mt-16 mb-16">
       <div>
@@ -52,7 +57,7 @@ const ShopByCategory = () => {
               categories.map((category, index) => (
                 <li key={index} className="flex">
                   <a
-                    className="btn btn-sm btn-primary"
+                    className="btn btn-sm btn-primary text-white"
                     onClick={() => handleDisplayToysByCategory(category)}
                   >
                     {category}
@@ -72,11 +77,12 @@ const ShopByCategory = () => {
               ))}
             </div>
             <div className="text-center mt-8">
-              <Link to="/allToys">
-                <button className="btn btn-primary mt-8 px-8 border-0">
-                  All Toys
-                </button>
-              </Link>
+              <button
+                onClick={handleDisplayAllToys}
+                className="btn btn-primary mt-8 px-8 border-0"
+              >
+                {loading ? "Loading..." : "Show More Toys"}
+              </button>
             </div>
           </div>
         </div>

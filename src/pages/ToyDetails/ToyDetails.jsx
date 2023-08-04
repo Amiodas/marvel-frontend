@@ -9,10 +9,11 @@ const ToyDetails = () => {
     picture,
     price,
     description,
-    categories,
-    subcategories,
+    category,
+    subcategory,
     rating,
     seller,
+    seller_email
   } = toyDetails;
   console.log(toyDetails);
   const handleBookToy = (id) => {
@@ -33,10 +34,10 @@ const ToyDetails = () => {
               Price: ${price}
             </p>
             <p className="text-gray-600 mb-2">
-              <span className="font-bold">Categories:</span> {categories}
+              <span className="font-bold">Categories:</span> {category}
             </p>
             <p className="text-gray-600 mb-2">
-              <span className="font-bold">Subcategories:</span> {subcategories}
+              <span className="font-bold">Subcategories:</span> {subcategory}
             </p>
             <p className="text-gray-600 mb-2">
               <span className="font-bold">Rating:</span> {rating}
@@ -44,15 +45,18 @@ const ToyDetails = () => {
             <p className="text-gray-600 mb-2">
               <span className="font-bold">Seller:</span> {seller}
             </p>
+            <p className="text-gray-600 mb-2">
+              <span className="font-bold">Seller Email:</span> {seller_email}
+            </p>
             <p className="text-gray-600">
               <span className="font-bold">Description:</span> {description}
             </p>
           </div>
           <div className="mt-8">
-            <Link to={`/checkout/${_id}`}>
+            <Link to="">
               <button
                 onClick={() => handleBookToy(_id)}
-                className="btn btn-block btn-primary"
+                className="btn btn-block btn-primary text-white"
               >
                 Checkout
               </button>

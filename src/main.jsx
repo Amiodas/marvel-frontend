@@ -15,7 +15,9 @@ import ErrorPageLayout from "./layouts/ErrorPageLayout/ErrorPageLayout";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import Blog from "./pages/Blog/Blog";
 import ToyDetails from "./pages/ToyDetails/ToyDetails";
-import Checkout from "./pages/Checkout/Checkout";
+// import Checkout from "./pages/Checkout/Checkout";
+import PrivateRoutes from "./routes/PrivateRoutes";
+import Edit from "./pages/MyToys/Edit/Edit";
 
 const router = createBrowserRouter([
   {
@@ -36,7 +38,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <Profile />,
+        element: <PrivateRoutes><Profile /></PrivateRoutes>,
       },
       {
         path: "/allToys",
@@ -44,21 +46,27 @@ const router = createBrowserRouter([
       },
       {
         path: "/myToys",
-        element: <MyToys />
+        element: <PrivateRoutes><MyToys /></PrivateRoutes>,
       },
       {
-        path: "/checkout/:id",
-        element: <Checkout />,
+        path: "/myToys/edit/:id",
+        element: <PrivateRoutes><Edit /></PrivateRoutes>,
         loader: ({params}) => fetch(`http://localhost:5000/toys/${params.id}`)
+
       },
+      // {
+      //   path: "/checkout/:id",
+      //   element: <PrivateRoutes><Checkout /></PrivateRoutes>,
+      //   loader: ({params}) => fetch(`http://localhost:5000/toys/${params.id}`)
+      // },
       {
         path: "/addAToy",
-        element: <AddAToy />,
+        element: <PrivateRoutes><AddAToy /></PrivateRoutes>,
         loader: () => fetch("http://localhost:5000/totalToy"),
       },
       {
         path: "/toyDetails/:id",
-        element: <ToyDetails />,
+        element: <PrivateRoutes><ToyDetails /></PrivateRoutes>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/toys/${params.id}`),
       },

@@ -5,7 +5,7 @@ const ContactSection = () => {
   return (
     <div className="grid grid-cols-2 gap-5 my-16">
       <div className="flex items-center">
-        <div>
+        <div className="">
           <h3 className="text-3xl text-primary font-bold">Contact Us</h3>
           <p className="mt-4 text-gray-600">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim,

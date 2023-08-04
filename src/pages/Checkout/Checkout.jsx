@@ -62,12 +62,12 @@ const Checkout = () => {
   };
   return (
     <div className="mt-10 mb-16">
+      <div className="card shadow-lg p-10">
       <h3 className="text-2xl text-primary">Checkout</h3>
-      <div className="mt-8">
-        <form onSubmit={handleAddedToMyToys}>
+        <form onSubmit={handleAddedToMyToys} className="mt-8">
           <div className="grid grid-cols-2 gap-8">
             <div className="form-control">
-              <label className="label">Seller Name</label>
+              <label className="label text-gray-500">Seller Name</label>
               <input
                 type="text"
                 name="seller"
@@ -79,7 +79,7 @@ const Checkout = () => {
               />
             </div>
             <div className="form-control">
-              <label className="label">Seller Email</label>
+              <label className="label text-gray-500">Seller Email</label>
               <input
                 type="text"
                 name="sellerEmail"
@@ -93,7 +93,7 @@ const Checkout = () => {
           </div>
           <div className="grid grid-cols-2 gap-8">
             <div className="form-control">
-              <label className="label">Name</label>
+              <label className="label text-gray-500">Name</label>
               <input
                 type="text"
                 name="name"
@@ -105,7 +105,7 @@ const Checkout = () => {
               />
             </div>
             <div className="form-control">
-              <label className="label">Picture</label>
+              <label className="label text-gray-500">Picture</label>
               <input
                 type="text"
                 name="picture"
@@ -119,7 +119,7 @@ const Checkout = () => {
           </div>
           <div className="grid grid-cols-3 gap-8">
             <div className="form-control">
-              <label className="label">Categories</label>
+              <label className="label text-gray-500">Categories</label>
               <input
                 type="text"
                 name="categories"
@@ -131,7 +131,7 @@ const Checkout = () => {
               />
             </div>
             <div className="form-control">
-              <label className="label">Subcategories</label>
+              <label className="label text-gray-500">Subcategories</label>
               <input
                 type="text"
                 name="subcategories"
@@ -143,7 +143,7 @@ const Checkout = () => {
               />
             </div>
             <div className="form-control">
-              <label className="label">Price</label>
+              <label className="label text-gray-500">Price</label>
               <input
                 type="text"
                 name="price"
@@ -157,7 +157,7 @@ const Checkout = () => {
           </div>
           <div className="grid grid-cols-3 gap-8">
             <div className="form-control">
-              <label className="label">Rating</label>
+              <label className="label text-gray-500">Rating</label>
               <input
                 type="text"
                 name="rating"
@@ -169,7 +169,7 @@ const Checkout = () => {
               />
             </div>
             <div className="form-control">
-              <label className="label">Manufacturer</label>
+              <label className="label text-gray-500">Manufacturer</label>
               <input
                 type="text"
                 name="manufacturer"
@@ -181,18 +181,18 @@ const Checkout = () => {
               />
             </div>
             <div className="form-control">
-              <label className="label">Date</label>
+              <label className="label text-gray-500">Date</label>
               <input
                 type="date"
                 name="date"
                 placeholder="Type here"
-                className="input w-full border bg-gray-200"
+                className="input w-full border border-gray-200 bg-white"
                 required
               />
             </div>
           </div>
           <div className="form-control">
-            <label className="label">Description</label>
+            <label className="label text-gray-500">Description</label>
             <textarea
               type="text"
               name="description"
@@ -204,7 +204,7 @@ const Checkout = () => {
             />
           </div>
           <div className="text-center mt-12">
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-block btn-primary">
               Buy Now
             </button>
           </div>

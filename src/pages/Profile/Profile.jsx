@@ -4,15 +4,17 @@ import { AuthContext } from '../../providers/AuthProviders';
 const Profile = () => {
     const {user, loading} = useContext(AuthContext);
     return (
-        <div className='card p-5 shadow-lg mt-8 mb-16'>
-            <h2 className='text-2xl font-bold text-primary'>Your Profile</h2>
-            <div className='my-5'>
+        <div className='flex justify-center'>
+            <div className='card bg-gray-200 rounded-none text-center py-10 mt-12 mb-16 w-1/4'>
+            <h2 className='text-xl font-bold text-primary'>Your Profile</h2>
+            <div className='my-6 flex justify-center'>
                 {
-                    loading ? "Loading..." : <img className='card shadow-lg w-48 h-48 border-4 border-primary' src={user?.photoURL} alt="" /> 
+                    loading ? "Loading..." : <img className='card  rounded-none w-32 h-32' src={user?.photoURL} alt="" /> 
                 }
             </div>
-            <h3 className='text-xl text-primary font-bold'>{loading ? "Loading..." : user?.displayName}</h3>
-            <h3 className='text-xl text-primary font-bold'>{loading ? "Loading..." : user?.email}</h3>
+            <h3 className='text-primary mb-1'>{loading ? "Loading..." : `Name: ${user?.displayName}`}</h3>
+            <h3 className='text-primary'>{loading ? "Loading..." : `Email: ${user?.email}`}</h3>
+        </div>
         </div>
     );
 };

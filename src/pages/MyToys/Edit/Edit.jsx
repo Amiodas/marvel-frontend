@@ -1,12 +1,26 @@
 import React, { useContext } from "react";
-import { AuthContext } from "../../providers/AuthProviders";
+import { AuthContext } from "../../../providers/AuthProviders";
 import { ToastContainer, toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
-const AddAToy = () => {
+const Edit = () => {
   const { user } = useContext(AuthContext);
+  const selectedToy = useLoaderData();
   const navigate = useNavigate();
-  const handleAddAToy = (event) => {
+  const {
+    _id,
+    name,
+    picture,
+    category,
+    subcategory,
+    price,
+    rating,
+    quantity,
+    description,
+  } = selectedToy;
+
+  console.log(selectedToy);
+  const handleEditAToy = (event) => {
     event.preventDefault();
     const form = event.target;
     const seller = form.seller.value;
@@ -20,7 +34,7 @@ const AddAToy = () => {
     const quantity = form.quantity.value;
     const description = form.description.value;
 
-    const addedToy = {
+    const updatedToy = {
       seller,
       seller_email,
       name,
@@ -33,18 +47,17 @@ const AddAToy = () => {
       description,
     };
 
-    fetch("http://localhost:5000/addAToy", {
-      method: "POST",
+    fetch(`http://localhost:5000/toys/${_id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(addedToy),
+      body: JSON.stringify(updatedToy),
     })
       .then((res) => {
         res.json();
-        form.reset();
-        toast("New toy added successfully.");
-        navigate("/AllToys");
+        toast("Updated successfully");
+        navigate(`/toyDetails/${_id}`);
       })
       .then((error) => {
         toast(error.code, error.message);
@@ -52,9 +65,11 @@ const AddAToy = () => {
   };
   return (
     <div className="mt-8 mb-16">
-    <ToastContainer />
-      <form onSubmit={handleAddAToy} className="card p-10 shadow-lg">
-      <h3 className="text-2xl text-primary mb-5 border-b-4 border-primary pb-3">Add a toy</h3>
+      <ToastContainer />
+      <form onSubmit={handleEditAToy} className="card p-10 shadow-lg">
+        <h3 className="text-2xl text-primary mb-5 border-b-4 border-primary pb-3">
+          Edit toy
+        </h3>
         <div className="grid grid-cols-2 gap-8">
           <div className="form-control">
             <label className="label text-gray-600">Seller Name</label>
@@ -87,6 +102,7 @@ const AddAToy = () => {
             <input
               type="text"
               name="picture"
+              defaultValue={picture}
               placeholder="Type here"
               className="input border-2 border-gray-300 w-full bg-white"
               required
@@ -97,6 +113,7 @@ const AddAToy = () => {
             <input
               type="text"
               name="name"
+              defaultValue={name}
               placeholder="Type here"
               className="input border-2 border-gray-300 w-full bg-white"
               required
@@ -109,6 +126,7 @@ const AddAToy = () => {
             <input
               type="text"
               name="category"
+              defaultValue={category}
               placeholder="Type here"
               className="input border-2 border-gray-300 w-full bg-white"
               required
@@ -119,6 +137,7 @@ const AddAToy = () => {
             <input
               type="text"
               name="subcategory"
+              defaultValue={subcategory}
               placeholder="Type here"
               className="input border-2 border-gray-300 w-full bg-white"
               required
@@ -129,6 +148,7 @@ const AddAToy = () => {
             <input
               type="number"
               name="price"
+              defaultValue={price}
               placeholder="Type here"
               className="input border-2 border-gray-300 w-full bg-white"
               required
@@ -141,6 +161,7 @@ const AddAToy = () => {
             <input
               type="text"
               name="rating"
+              defaultValue={rating}
               placeholder="Type here"
               className="input border-2 border-gray-300 w-full bg-white"
               required
@@ -151,6 +172,7 @@ const AddAToy = () => {
             <input
               type="number"
               name="quantity"
+              defaultValue={quantity}
               placeholder="Type here"
               className="input border-2 border-gray-300 w-full bg-white"
               required
@@ -162,6 +184,7 @@ const AddAToy = () => {
           <textarea
             type="text"
             name="description"
+            defaultValue={description}
             placeholder="Type here"
             className="textarea border-2 border-gray-300 w-full bg-white"
             required
@@ -169,7 +192,7 @@ const AddAToy = () => {
         </div>
         <div className="mt-8">
           <button type="submit" className="btn btn-block btn-primary">
-            Add a toy
+            Update toy
           </button>
         </div>
       </form>
@@ -177,4 +200,4 @@ const AddAToy = () => {
   );
 };
 
-export default AddAToy;
+export default Edit;

@@ -1,11 +1,15 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const { loginUser, googleSignIn } = useContext(AuthContext);
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const navigate = useNavigate();
+
   const handleLoginUser = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -14,27 +18,60 @@ const Login = () => {
 
     loginUser(email, password)
       .then((res) => {
-        toast("User succesfully signed in!!!")
-        console.log(res);
+        const user = res.user;
+        const loggedUser = {
+          email: user.email,
+        };
+        console.log(loggedUser);
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(loggedUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("jwt response", data);
+            localStorage.setItem("toy-market-place-token", data.token);
+          });
+        toast("Successfully login");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         toast(error.code, error.message);
-        console.log(error.code, error.message);
       });
   };
   const handleGoogleSignIn = () => {
     googleSignIn()
-      .then(() => {
-        toast("User succesfully signed in!!!")
+      .then((res) => {
+        toast("Successfully sign in with google!");
+        const user = res.user;
+        const loggedUser = {
+          email: user.email,
+        };
+        console.log(loggedUser);
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(loggedUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("jwt response", data);
+            localStorage.setItem("toy-market-place-token", data.token);
+          });
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         toast(error.code, error.message);
-        console.log(error.code, error.message);
       });
   };
   return (
     <div className="hero min-h-screen">
-    <ToastContainer />
+      <ToastContainer />
       <div className="hero-content flex-col lg:flex-row">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl text-primary font-bold">Login now!</h1>
@@ -46,7 +83,9 @@ const Login = () => {
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl">
           <form onSubmit={handleLoginUser} className="card-body">
-            <h3 className="text-2xl font-bold text-center text-primary">Login</h3>
+            <h3 className="text-2xl font-bold text-center text-primary">
+              Login
+            </h3>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ToyCard from "../../components/ToyCard/ToyCard";
+import { Link } from "react-router-dom";
 
 const AllToys = () => {
   const [toys, setToys] = useState([]);
@@ -54,7 +55,7 @@ const AllToys = () => {
 
   const handleDisplayToysByCategory = (category) => {
     console.log(category);
-    const toyByCategory = toys.filter((toy) => toy.categories === category);
+    const toyByCategory = toys.filter((toy) => toy.category === category);
     console.log(toyByCategory);
     setDisplayToys(toyByCategory);
   };
@@ -73,13 +74,13 @@ const AllToys = () => {
     <div>
       <div className="mt-8 mb-16">
         <div>
-          <h2 className="text-xl text-primary font-bold">All toys</h2>
+          <h2 className="text-2xl text-primary">All toys</h2>
           <div className="grid grid-cols-4 gap-6 mt-5">
             <div className="bg-gray-100 min-h-screen rounded-lg p-5">
               <h2 className="text-lg text-primary font-semibold">Categories</h2>
               <ul className="menu rounded-box mt-5">
                 {categories.map((category, index) => (
-                  <li key={index}>
+                  <li className="text-gray-600" key={index}>
                     <a onClick={() => handleDisplayToysByCategory(category)}>
                       {category}
                     </a>
@@ -120,10 +121,66 @@ const AllToys = () => {
                   </div>
                 </div>
               )}
-              <div className="grid grid-cols-3 gap-5">
-                {displayToys.map((toy) => (
+              <div className="grid gap-5">
+                {/* {displayToys.map((toy) => (
                   <ToyCard key={toy._id} toy={toy} />
-                ))}
+                ))} */}
+                <div className="">
+                  {displayToys.length === 0 ? (
+                    ""
+                  ) : (
+                    <div className="grid grid-cols-6 bg-primary p-1 font-bold text-white mb-2">
+                      <p className="pl-1">Image</p>
+                      <p className="pl-1">Name</p>
+                      <p className="pl-1">Seller</p>
+                      <p className="pl-1 text-center">Quantities</p>
+                      <p className="pl-1 text-center">Price</p>
+                      <p className="pl-1">Action</p>
+                    </div>
+                  )}
+                  {displayToys.map((toy) => (
+                    <div
+                      className="card rounded-none p-3 border-b-2"
+                      key={toy._id}
+                    >
+                      <div className="grid grid-cols-6 items-center gap-4">
+                        <div className="flex justify-left">
+                          <img
+                            src={toy.picture}
+                            className="w-24 h-24 rounded-lg"
+                            alt=""
+                          />
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-bold text-primary">
+                            {toy.name}
+                          </h3>
+                        </div>
+                        <div>
+                          <p className="text-gray-500">Seller: {toy.seller}</p>
+                          <p className="text-gray-500">
+                            Seller Email: {toy.seller_email}
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-lg text-primary font-bold text-center">
+                            <span>{toy.quantity}</span>
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-gray-500 text-center">$ {toy.price}</p>
+                        </div>
+                        <div className="flex gap-5">
+                          <Link to={`/toyDetails/${toy._id}`}>
+                            <button className="btn btn-primary text-white btn-xs">
+                              View Details
+                            </button>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
               <div className="pagination text-center space-x-2 mt-5">
                 <p>Current Page: {currentPage + 1}</p>
