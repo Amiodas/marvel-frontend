@@ -75,13 +75,19 @@ const Header = () => {
                   <ActiveClass to="/allToys">All toys</ActiveClass>
                 </li>
                 <li>
-                  <ActiveClass to="/myToys">My toys</ActiveClass>
+                  {
+                    user ? <ActiveClass to="/myToys">My toys</ActiveClass> : "" 
+                  }
                 </li>
                 <li>
-                  <ActiveClass to="/addAToy">Add a toy</ActiveClass>
+                  {
+                    user ? <ActiveClass to="/addAToy">Add a toy</ActiveClass> : ""
+                  }
                 </li>
                 <li>
-                  <Link to="/profile">Profile</Link>
+                  {
+                    user ? <Link to="/profile">Profile</Link> : ""
+                  }
                 </li>
                 <li>
                   {user ? (
@@ -100,8 +106,12 @@ const Header = () => {
             <ActiveClass to="/">Home</ActiveClass>
             <ActiveClass to="/blog">Blog</ActiveClass>
             <ActiveClass to="/allToys">All toys</ActiveClass>
-            <ActiveClass to="/myToys">My toys</ActiveClass>
-            <ActiveClass to="/addAToy">Add a toy</ActiveClass>
+            {
+              user ? <ActiveClass to="/myToys">My toys</ActiveClass> : ""
+            }
+            {
+              user ? <ActiveClass to="/addAToy">Add a toy</ActiveClass> : ""
+            }
             {loading ? (
               <span>Loading...</span>
             ) : user ? (
