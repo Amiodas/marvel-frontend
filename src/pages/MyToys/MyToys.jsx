@@ -1,13 +1,18 @@
 import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProviders";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [myToys, setMyToys] = useState([]);
+  const location = useLocation();
+
+  useEffect(() => {
+    document.title = 'Marvel' + " | " + "My Toys";
+  }, [location]);
 
   useEffect(() => {
     fetch(`http://localhost:5000/myToys?email=${user?.email}`, {

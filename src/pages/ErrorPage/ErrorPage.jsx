@@ -1,8 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "./ErrorPage.css"
 
 const ErrorPage = () => {
+  const location = useLocation();
+  useEffect(() => {
+    document.title = 'Marvel' + " | " + "Error Page";
+  }, [location]);
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="space-y-6 text-center">

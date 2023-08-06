@@ -1,11 +1,10 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
 const ContactSection = () => {
   return (
-    <div className="grid grid-cols-2 gap-5 my-16">
-      <div className="flex items-center">
-        <div className="">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 my-16">
+      <div className="flex items-center" data-aos="fade-right">
+        <div className="px-6 md:px-0">
           <h3 className="text-3xl text-primary font-bold">Contact Us</h3>
           <p className="mt-4 text-gray-600">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim,
@@ -37,7 +36,7 @@ const ContactSection = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center" data-aos="zoom-in">
         <div className="card shadow-lg p-10 w-96">
           <h3 className="text-xl font-bold mb-4 text-primary">
             Send us a message

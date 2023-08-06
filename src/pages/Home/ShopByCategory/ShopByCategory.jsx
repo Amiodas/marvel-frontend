@@ -47,31 +47,49 @@ const ShopByCategory = () => {
   return (
     <div className="mt-16 mb-16">
       <div>
-        <h2 className="text-xl text-primary font-bold">Shop by category</h2>
-        <div className="flex gap-4 mb-3 mt-4">
-          <h2 className="text-lg text-primary font-semibold">Categories:</h2>
-          <div className="flex gap-4">
-            {loadingCategory ? (
-              <span className="loading loading-spinner text-primary"></span>
-            ) : (
-              categories.map((category, index) => (
-                <li key={index} className="flex">
-                  <a
-                    className="btn btn-sm btn-primary text-white"
-                    onClick={() => handleDisplayToysByCategory(category)}
-                  >
-                    {category}
-                  </a>
-                </li>
-              ))
-            )}
+        <div>
+          <div data-aos="fade-down">
+            <h3 className="text-4xl font-bold text-center text-primary">
+              Shop by Category
+            </h3>
+            <div className="flex justify-center text-center mx-auto mt-5 mb-8">
+              <p className="text-gray-600 w-3/4 lg:w-1/2">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Provident sunt dicta illum? Qui illo est nulla laborum ipsa
+                deleniti obcaecati in eligendi sed, at illum perferendis
+                accusamus, sequi voluptate molestiae.
+              </p>
+            </div>
+          </div>
+          <div data-aos="fade-right" className="flex justify-center">
+            <div className="block text-center lg:flex gap-4">
+              <h2 className="text-lg text-primary font-semibold">
+                Categories:
+              </h2>
+              <div className="flex gap-4 justify-center lg:justify-start mt-5 lg:mt-0">
+                {loadingCategory ? (
+                  <span className="loading loading-spinner text-primary"></span>
+                ) : (
+                  categories.map((category, index) => (
+                    <li key={index} className="flex">
+                      <a
+                        className="btn btn-sm btn-primary text-white"
+                        onClick={() => handleDisplayToysByCategory(category)}
+                      >
+                        {category}
+                      </a>
+                    </li>
+                  ))
+                )}
+              </div>
+            </div>
           </div>
         </div>
         <div className="mt-10 mb-16">
           <div className="rounded-lg">
-            <div className="grid grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mx-8">
               {displayToys.map((toy) => (
-                <div key={toy._id}>
+                <div key={toy._id} data-aos="fade-zoom-in">
                   <ToyCard loading={loading} toy={toy} />
                 </div>
               ))}

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 import { ToastContainer, toast } from "react-toastify";
@@ -9,6 +9,10 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = "Marvel" + " | " + "Login";
+  }, [location]);
 
   const handleLoginUser = (event) => {
     event.preventDefault();
@@ -32,7 +36,6 @@ const Login = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log("jwt response", data);
             localStorage.setItem("toy-market-place-token", data.token);
           });
         toast("Successfully login");
@@ -60,7 +63,6 @@ const Login = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log("jwt response", data);
             localStorage.setItem("toy-market-place-token", data.token);
           });
         navigate(from, { replace: true });

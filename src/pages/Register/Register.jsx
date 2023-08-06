@@ -1,11 +1,18 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const { createUser, updateUser, googleSignIn } = useContext(AuthContext);
+  const location = useLocation();
+  
+  useEffect(() => {
+    document.title = 'Marvel' + " | " + "Register";
+  }, [location]);
+
+
   const handleCreateRegister = (event) => {
     event.preventDefault();
     const form = event.target;

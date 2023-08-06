@@ -1,12 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../../../providers/AuthProviders";
 import { ToastContainer, toast } from "react-toastify";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 
 const Edit = () => {
   const { user } = useContext(AuthContext);
   const selectedToy = useLoaderData();
   const navigate = useNavigate();
+  const location = useLocation();
+  useEffect(() => {
+    document.title = 'Marvel' + " | " + "My Toys > Edit";
+  }, [location]);
   const {
     _id,
     name,
@@ -64,13 +68,13 @@ const Edit = () => {
       });
   };
   return (
-    <div className="mt-8 mb-16">
+    <div className="mt-5 sm:mt-8 mb-8 sm:mb-16 px-6 sm:px-0">
       <ToastContainer />
-      <form onSubmit={handleEditAToy} className="card p-10 shadow-lg">
+      <form onSubmit={handleEditAToy} className="card p-6 sm:p-10 shadow-lg">
         <h3 className="text-2xl text-primary mb-5 border-b-4 border-primary pb-3">
           Edit toy
         </h3>
-        <div className="grid grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-8">
           <div className="form-control">
             <label className="label text-gray-600">Seller Name</label>
             <input
@@ -78,7 +82,7 @@ const Edit = () => {
               name="seller"
               defaultValue={user?.displayName}
               placeholder="Type here"
-              className="input border-2 border-gray-300 w-full bg-white"
+              className="input border border-gray-300 w-full bg-white"
               readOnly
               required
             />
@@ -90,13 +94,13 @@ const Edit = () => {
               name="sellerEmail"
               defaultValue={user?.email}
               placeholder="Type here"
-              className="input border-2 border-gray-300 w-full bg-white"
+              className="input border border-gray-300 w-full bg-white"
               readOnly
               required
             />
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-8">
           <div className="form-control">
             <label className="label text-gray-600">Picture</label>
             <input
@@ -104,7 +108,7 @@ const Edit = () => {
               name="picture"
               defaultValue={picture}
               placeholder="Type here"
-              className="input border-2 border-gray-300 w-full bg-white"
+              className="input border border-gray-300 w-full bg-white"
               required
             />
           </div>
@@ -115,12 +119,12 @@ const Edit = () => {
               name="name"
               defaultValue={name}
               placeholder="Type here"
-              className="input border-2 border-gray-300 w-full bg-white"
+              className="input border border-gray-300 w-full bg-white"
               required
             />
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 sm:gap-8">
           <div className="form-control">
             <label className="label text-gray-600">Category</label>
             <input
@@ -128,7 +132,7 @@ const Edit = () => {
               name="category"
               defaultValue={category}
               placeholder="Type here"
-              className="input border-2 border-gray-300 w-full bg-white"
+              className="input border border-gray-300 w-full bg-white"
               required
             />
           </div>
@@ -139,7 +143,7 @@ const Edit = () => {
               name="subcategory"
               defaultValue={subcategory}
               placeholder="Type here"
-              className="input border-2 border-gray-300 w-full bg-white"
+              className="input border border-gray-300 w-full bg-white"
               required
             />
           </div>
@@ -150,7 +154,7 @@ const Edit = () => {
               name="price"
               defaultValue={price}
               placeholder="Type here"
-              className="input border-2 border-gray-300 w-full bg-white"
+              className="input border border-gray-300 w-full bg-white"
               required
             />
           </div>
@@ -163,7 +167,7 @@ const Edit = () => {
               name="rating"
               defaultValue={rating}
               placeholder="Type here"
-              className="input border-2 border-gray-300 w-full bg-white"
+              className="input border border-gray-300 w-full bg-white"
               required
             />
           </div>
@@ -174,7 +178,7 @@ const Edit = () => {
               name="quantity"
               defaultValue={quantity}
               placeholder="Type here"
-              className="input border-2 border-gray-300 w-full bg-white"
+              className="input border border-gray-300 w-full bg-white"
               required
             />
           </div>
@@ -186,7 +190,7 @@ const Edit = () => {
             name="description"
             defaultValue={description}
             placeholder="Type here"
-            className="textarea border-2 border-gray-300 w-full bg-white"
+            className="textarea border border-gray-300 w-full bg-white"
             required
           />
         </div>

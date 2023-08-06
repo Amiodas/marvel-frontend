@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ToyCard from "../../components/ToyCard/ToyCard";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const AllToys = () => {
   const [toys, setToys] = useState([]);
@@ -13,6 +12,11 @@ const AllToys = () => {
   const totalPages = Math.ceil(totalToy / itemsPerPage);
   const pageNumbers = [...Array(totalPages).keys()];
   const options = [5, 10];
+
+  const location = useLocation();
+  useEffect(() => {
+    document.title = "Marvel" + " | " + "All Toys";
+  }, [location]);
 
   useEffect(() => {
     fetch("http://localhost:5000/toys")
@@ -70,15 +74,36 @@ const AllToys = () => {
     );
     setDisplayToys(toyByCategory);
   };
+
+  const handleSelectedFilter = (event) => {
+    const selectedOrder = event.target.value;
+    fetch(`http://localhost:5000/toys/${selectedOrder}`)
+      .then((res) => res.json())
+      .then((data) => setDisplayToys(data));
+  };
   return (
     <div>
       <div className="mt-8 mb-16">
         <div>
           <h2 className="text-2xl text-primary">All toys</h2>
           <div className="grid grid-cols-4 gap-6 mt-5">
-            <div className="bg-gray-100 min-h-screen rounded-lg p-5">
-              <h2 className="text-lg text-primary font-semibold">Categories</h2>
-              <ul className="menu rounded-box mt-5">
+            <div className="bg-gray-100 rounded-lg p-5">
+              <div className="form-control w-full max-w-xs">
+                <label className="label">
+                  <span className="label-text text-lg font-semibold text-primary">
+                    Filter by price
+                  </span>
+                </label>
+                <select
+                  className="select select-bordered bg-primary mt-2"
+                  onChange={handleSelectedFilter}
+                >
+                  <option value="ascending">Ascending</option>
+                  <option value="descending">Descending</option>
+                </select>
+              </div>
+              <h2 className="text-lg text-primary font-semibold mt-5">Categories</h2>
+              <ul className="menu rounded-box mt-2">
                 {categories.map((category, index) => (
                   <li className="text-gray-600" key={index}>
                     <a onClick={() => handleDisplayToysByCategory(category)}>
@@ -168,7 +193,9 @@ const AllToys = () => {
                           </p>
                         </div>
                         <div>
-                          <p className="text-gray-500 text-center">$ {toy.price}</p>
+                          <p className="text-gray-500 text-center">
+                            $ {toy.price}
+                          </p>
                         </div>
                         <div className="flex gap-5">
                           <Link to={`/toyDetails/${toy._id}`}>

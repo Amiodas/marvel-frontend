@@ -1,10 +1,9 @@
-import React from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useLoaderData, useLocation } from "react-router-dom";
 
 const ToyDetails = () => {
   const toyDetails = useLoaderData();
   const {
-    _id,
     name,
     picture,
     price,
@@ -13,12 +12,13 @@ const ToyDetails = () => {
     subcategory,
     rating,
     seller,
-    seller_email
+    seller_email,
   } = toyDetails;
-  console.log(toyDetails);
-  const handleBookToy = (id) => {
-    console.log(id);
-  };
+
+  const location = useLocation();
+  useEffect(() => {
+    document.title = "Marvel" + " | " + "Toy Details";
+  }, [location]);
   return (
     <div className="mt-16 mb-16">
       <div className="grid grid-cols-2 gap-10">
@@ -55,7 +55,6 @@ const ToyDetails = () => {
           <div className="mt-8">
             <Link to="">
               <button
-                onClick={() => handleBookToy(_id)}
                 className="btn btn-block btn-primary text-white"
               >
                 Checkout

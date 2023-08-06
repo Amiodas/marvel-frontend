@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Main from "./layouts/Main/Main.jsx";
 import Home from "./pages/Home/Home.jsx";
@@ -19,6 +21,8 @@ import ToyDetails from "./pages/ToyDetails/ToyDetails";
 import PrivateRoutes from "./routes/PrivateRoutes";
 import Edit from "./pages/MyToys/Edit/Edit";
 
+
+AOS.init();
 const router = createBrowserRouter([
   {
     path: "/",

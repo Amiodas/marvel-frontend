@@ -1,11 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import { ToastContainer, toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const AddAToy = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    document.title = "Marvel" + " | " + "Add a toy";
+  }, [location]);
+
   const handleAddAToy = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -51,11 +57,13 @@ const AddAToy = () => {
       });
   };
   return (
-    <div className="mt-8 mb-16">
-    <ToastContainer />
-      <form onSubmit={handleAddAToy} className="card p-10 shadow-lg">
-      <h3 className="text-2xl text-primary mb-5 border-b-4 border-primary pb-3">Add a toy</h3>
-        <div className="grid grid-cols-2 gap-8">
+    <div className="mt-5 sm:mt-8 mb-8 sm:mb-16 px-6 sm:px-0">
+      <ToastContainer />
+      <form onSubmit={handleAddAToy} className="card p-6 sm:p-10 shadow-lg">
+        <h3 className="text-2xl text-primary mb-5 border-b-4 border-primary pb-3">
+          Add a toy
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-8">
           <div className="form-control">
             <label className="label text-gray-600">Seller Name</label>
             <input
@@ -63,7 +71,7 @@ const AddAToy = () => {
               name="seller"
               defaultValue={user?.displayName}
               placeholder="Type here"
-              className="input border-2 border-gray-300 w-full bg-white"
+              className="input border border-gray-300 w-full bg-white"
               readOnly
               required
             />
@@ -75,20 +83,20 @@ const AddAToy = () => {
               name="sellerEmail"
               defaultValue={user?.email}
               placeholder="Type here"
-              className="input border-2 border-gray-300 w-full bg-white"
+              className="input border border-gray-300 w-full bg-white"
               readOnly
               required
             />
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-8">
           <div className="form-control">
             <label className="label text-gray-600">Picture</label>
             <input
               type="text"
               name="picture"
               placeholder="Type here"
-              className="input border-2 border-gray-300 w-full bg-white"
+              className="input border border-gray-300 w-full bg-white"
               required
             />
           </div>
@@ -98,19 +106,19 @@ const AddAToy = () => {
               type="text"
               name="name"
               placeholder="Type here"
-              className="input border-2 border-gray-300 w-full bg-white"
+              className="input border border-gray-300 w-full bg-white"
               required
             />
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 sm:gap-8">
           <div className="form-control">
             <label className="label text-gray-600">Category</label>
             <input
               type="text"
               name="category"
               placeholder="Type here"
-              className="input border-2 border-gray-300 w-full bg-white"
+              className="input border border-gray-300 w-full bg-white"
               required
             />
           </div>
@@ -120,7 +128,7 @@ const AddAToy = () => {
               type="text"
               name="subcategory"
               placeholder="Type here"
-              className="input border-2 border-gray-300 w-full bg-white"
+              className="input border border-gray-300 w-full bg-white"
               required
             />
           </div>
@@ -130,7 +138,7 @@ const AddAToy = () => {
               type="number"
               name="price"
               placeholder="Type here"
-              className="input border-2 border-gray-300 w-full bg-white"
+              className="input border border-gray-300 w-full bg-white"
               required
             />
           </div>
@@ -142,7 +150,7 @@ const AddAToy = () => {
               type="text"
               name="rating"
               placeholder="Type here"
-              className="input border-2 border-gray-300 w-full bg-white"
+              className="input border border-gray-300 w-full bg-white"
               required
             />
           </div>
@@ -152,7 +160,7 @@ const AddAToy = () => {
               type="number"
               name="quantity"
               placeholder="Type here"
-              className="input border-2 border-gray-300 w-full bg-white"
+              className="input border border-gray-300 w-full bg-white"
               required
             />
           </div>
@@ -163,7 +171,7 @@ const AddAToy = () => {
             type="text"
             name="description"
             placeholder="Type here"
-            className="textarea border-2 border-gray-300 w-full bg-white"
+            className="textarea border border-gray-300 w-full bg-white"
             required
           />
         </div>

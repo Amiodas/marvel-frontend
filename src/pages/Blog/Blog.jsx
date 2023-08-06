@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const Blog = () => {
+  const location = useLocation();
+  useEffect(() => {
+    document.title = "Marvel" + " | " + "Blog";
+  }, [location]);
   return (
-    <div className="mt-6 mb-16">
+    <div className="mt-6 mb-16 px-6 sm:px-0">
       <h3 className="text-xl font-bold text-primary"># Blogs</h3>
       <div className="mt-5">
         <h3 className="text-primary font-medium">
@@ -45,10 +50,10 @@ const Blog = () => {
         <div className="mt-1 text-gray-700">
           <b>Answer:</b>
           <p>
-            SQL (Structured Query Language) and NoSQL (Not Only SQL) databases
+            {`SQL (Structured Query Language) and NoSQL (Not Only SQL) databases
             are two broad categories of databases that serve different purposes
             and have distinct characteristics. Here's a comparison between the
-            two:
+            two:`}
           </p>
           <p className="mt-3">
             <span className="badge badge-primary text-white">
