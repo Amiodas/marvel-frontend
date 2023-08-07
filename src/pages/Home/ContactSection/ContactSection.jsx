@@ -18,17 +18,17 @@ const ContactSection = () => {
           <div>
             <div className="flex items-center space-x-5 mt-8">
               <img
-                src="/src/assets/images/contact/Facebook.png"
+                src="./images/contact/Facebook.png"
                 className="w-8 h-8 image-gray"
                 alt=""
               />
               <img
-                src="/src/assets/images/contact/WhatsApp.webp"
+                src="./images/contact/WhatsApp.webp"
                 className="w-10 h-10 image-gray"
                 alt=""
               />
               <img
-                src="/src/assets/images/contact/Instagram.jpg"
+                src="./images/contact/Instagram.jpg"
                 className="w-8 h-8 image-gray"
                 alt=""
               />

@@ -18,56 +18,56 @@ const GallerySection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <img
-              src="/src/assets/images/gallery/gallery_01.jpg"
+              src="./images/gallery/gallery_01.jpg"
               className="w-96 lg:w-96 h-64 image-gray"
               alt=""
             />
           </div>
           <div>
             <img
-              src="/src/assets/images/gallery/gallery_02.jpg"
+              src="./images/gallery/gallery_02.jpg"
               className="w-96 h-64 image-gray"
               alt=""
             />
           </div>
           <div>
             <img
-              src="/src/assets/images/gallery/gallery_03.jpg"
+              src="./images/gallery/gallery_03.jpg"
               className="w-96 h-64 image-gray"
               alt=""
             />
           </div>
           <div>
             <img
-              src="/src/assets/images/gallery/gallery_04.png"
+              src="./images/gallery/gallery_04.png"
               className="w-96 h-64 image-gray"
               alt=""
             />
           </div>
           <div>
             <img
-              src="/src/assets/images/gallery/gallery_05.jpg"
+              src="./images/gallery/gallery_05.jpg"
               className="w-96 h-64 image-gray"
               alt=""
             />
           </div>
           <div>
             <img
-              src="/src/assets/images/gallery/gallery_06.jpg"
+              src="./images/gallery/gallery_06.jpg"
               className="w-96 h-64 image-gray"
               alt=""
             />
           </div>
           <div>
             <img
-              src="/src/assets/images/gallery/gallery_07.jpg"
+              src="./images/gallery/gallery_07.jpg"
               className="w-96 h-64 image-gray"
               alt=""
             />
           </div>
           <div>
             <img
-              src="/src/assets/images/gallery/gallery_08.jpg"
+              src="./images/gallery/gallery_08.jpg"
               className="w-96 h-64 image-gray"
               alt=""
             />

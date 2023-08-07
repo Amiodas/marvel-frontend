@@ -135,7 +135,7 @@ const AllToys = () => {
                 <div className="flex justify-center">
                   <div>
                     <img
-                      src="/src/assets/images/search.jpg"
+                      src="./images/search.jpg"
                       className="w-96 h-96"
                       alt=""
                     />

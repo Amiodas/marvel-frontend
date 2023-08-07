@@ -10,7 +10,7 @@ const Banner = () => {
           className="carousel-item relative w-full rounded-lg"
         >
           <img
-            src="/src/assets/images/carousel/carousel_01.jpg"
+            src="./images/carousel/carousel_01.jpg"
             className="w-full rounded-lg h-80 md:h-96 banner-image-gray object-cover"
           />
           <div className="absolute text-center md:text-left transform md:-translate-y-1/2 md:left-24 md:right-5 md:top-1/2 w-3/4 md:w-1/4">

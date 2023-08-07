@@ -33,7 +33,7 @@ const Header = () => {
         <Link to="/">
           <h2 className="text-xl font-bold">
             <img
-              src="/src/assets/images/logo.png"
+              src="./images/logo.png"
               className="w-16 md:w-32 h-8 md:h-10"
               alt=""
             />
