@@ -66,7 +66,7 @@ const MyToys = () => {
           <div className="">
             <div>
               <div className="flex justify-center">
-                <img src="/src/assets/images/empty.png" alt="" />
+                <img src="./images/empty.png" alt="" />
               </div>
               <div className="text-center">
                 <h3 className="text-3xl text-primary">{`You didn't added any item to your marketplace`}</h3>
