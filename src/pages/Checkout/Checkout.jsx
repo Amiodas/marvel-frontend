@@ -50,7 +50,7 @@ const Checkout = () => {
 
     console.log(addedToy);
 
-    fetch("http://localhost:5000/myToys/", {
+    fetch("https://assignment-11-server-lake.vercel.app/myToys/", {
       method: "POST",
       headers: {
         "content-type": "application/json",

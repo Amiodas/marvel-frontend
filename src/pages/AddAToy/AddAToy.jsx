@@ -39,7 +39,7 @@ const AddAToy = () => {
       description,
     };
 
-    fetch("http://localhost:5000/addAToy", {
+    fetch("https://assignment-11-server-lake.vercel.app/addAToy", {
       method: "POST",
       headers: {
         "content-type": "application/json",

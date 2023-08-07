@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,11 +7,11 @@ import "react-toastify/dist/ReactToastify.css";
 const Register = () => {
   const { createUser, updateUser, googleSignIn } = useContext(AuthContext);
   const location = useLocation();
-  
-  useEffect(() => {
-    document.title = 'Marvel' + " | " + "Register";
-  }, [location]);
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    document.title = "Marvel" + " | " + "Register";
+  }, [location]);
 
   const handleCreateRegister = (event) => {
     event.preventDefault();
@@ -29,7 +29,24 @@ const Register = () => {
           .catch((error) => {
             console.log(error.code, error.message);
           });
+        const user = res.user;
+        const loggedUser = {
+          email: user.email,
+        };
+        console.log(loggedUser);
+        fetch("https://assignment-11-server-lake.vercel.app/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(loggedUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("toy-market-place-token", data.token);
+          });
         toast("User successfully, created!!!");
+        navigate("/");
       })
       .catch((error) => {
         toast(error.code, error.message);
@@ -39,8 +56,25 @@ const Register = () => {
 
   const handleGoogleSignIn = () => {
     googleSignIn()
-      .then(() => {
+      .then((res) => {
         toast("User successfully, created!!!");
+        const user = res.user;
+        const loggedUser = {
+          email: user.email,
+        };
+        console.log(loggedUser);
+        fetch("https://assignment-11-server-lake.vercel.app/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(loggedUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("toy-market-place-token", data.token);
+          });
+        navigate("/");
       })
       .catch((error) => {
         toast(error.code, error.message);
@@ -62,7 +96,9 @@ const Register = () => {
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl mt-8 mb-16">
           <form onSubmit={handleCreateRegister} className="card-body z-0">
-            <h3 className="text-2xl font-bold text-center text-primary">Sign Up</h3>
+            <h3 className="text-2xl font-bold text-center text-primary">
+              Sign Up
+            </h3>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
@@ -121,8 +157,8 @@ const Register = () => {
                 Sign Up
               </button>
             </div>
-            <div className="divider">OR</div>
-            <div className="text-center">
+            <div className="divider text-primary">OR</div>
+            <div className="text-center text-primary">
               <span>Already Have an account? </span>
               <Link to="/login" className="hover:underline">
                 Sign in

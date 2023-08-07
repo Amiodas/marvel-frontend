@@ -19,20 +19,20 @@ const AllToys = () => {
   }, [location]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/toys")
+    fetch("https://assignment-11-server-lake.vercel.app/toys")
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/totalToy")
+    fetch("https://assignment-11-server-lake.vercel.app/totalToy")
       .then((res) => res.json())
       .then((data) => setTotalToy(data.totalToy));
   }, []);
 
   useEffect(() => {
     fetch(
-      `http://localhost:5000/matchedToy?page=${currentPage}&limit=${itemsPerPage}`
+      `https://assignment-11-server-lake.vercel.app/matchedToy?page=${currentPage}&limit=${itemsPerPage}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -41,13 +41,13 @@ const AllToys = () => {
   }, [currentPage, itemsPerPage]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/matchedToy")
+    fetch("https://assignment-11-server-lake.vercel.app/matchedToy")
       .then((res) => res.json())
       .then((data) => setDisplayToys(data));
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/toyCategory")
+    fetch("https://assignment-11-server-lake.vercel.app/toyCategory")
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, []);
@@ -77,7 +77,7 @@ const AllToys = () => {
 
   const handleSelectedFilter = (event) => {
     const selectedOrder = event.target.value;
-    fetch(`http://localhost:5000/toys/${selectedOrder}`)
+    fetch(`https://assignment-11-server-lake.vercel.app/toys/${selectedOrder}`)
       .then((res) => res.json())
       .then((data) => setDisplayToys(data));
   };

@@ -15,7 +15,7 @@ const MyToys = () => {
   }, [location]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myToys?email=${user?.email}`, {
+    fetch(`https://assignment-11-server-lake.vercel.app/myToys?email=${user?.email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem(
@@ -27,7 +27,7 @@ const MyToys = () => {
       .then((data) => {
         setMyToys(data);
       });
-  }, []);
+  }, [user]);
 
   const handleDeleteToy = (id) => {
     Swal.fire({
@@ -40,7 +40,7 @@ const MyToys = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/myToys/${id}`, {
+        fetch(`https://assignment-11-server-lake.vercel.app/myToys/${id}`, {
           method: "DELETE",
         })
           .then((response) => response.json())

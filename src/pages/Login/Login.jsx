@@ -27,7 +27,7 @@ const Login = () => {
           email: user.email,
         };
         console.log(loggedUser);
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://assignment-11-server-lake.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -54,7 +54,7 @@ const Login = () => {
           email: user.email,
         };
         console.log(loggedUser);
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://assignment-11-server-lake.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -122,8 +122,8 @@ const Login = () => {
                 Login
               </button>
             </div>
-            <div className="divider">OR</div>
-            <div className="text-center">
+            <div className="divider text-primary">OR</div>
+            <div className="text-center text-primary">
               <span>Have no account? </span>
               <Link to="/register" className="hover:underline">
                 Sign up

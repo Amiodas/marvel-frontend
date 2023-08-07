@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./ShopByCategory.css";
 import ToyCard from "../../../components/ToyCard/ToyCard";
-import { Link } from "react-router-dom";
 
 const ShopByCategory = () => {
   const [toys, setToys] = useState([]);
@@ -11,7 +10,7 @@ const ShopByCategory = () => {
   const [loadingCategory, setLoadingCategory] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/toys/")
+    fetch("https://assignment-11-server-lake.vercel.app/toys/")
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
@@ -20,7 +19,7 @@ const ShopByCategory = () => {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/toyCategory")
+    fetch("https://assignment-11-server-lake.vercel.app/toyCategory")
       .then((res) => res.json())
       .then((data) => {
         setCategories(data);
